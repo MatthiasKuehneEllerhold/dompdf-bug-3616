@@ -1,0 +1,962 @@
+<!DOCTYPE html><html>
+    <head>
+        <style type="text/css">
+@font-face {
+  font-family: "Open Sans";
+  src: url("/assets/fonts/Open-Sans-Regular.woff2") format("woff2"), url("/assets/fonts/Open-Sans-Regular.woff") format("woff"), url("/assets/fonts/Open-Sans-Regular.ttf") format("truetype"), url("/assets/fonts/Open-Sans-Regular.svg") format("svg"); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url("/assets/fonts/Open-Sans-Bold.woff2") format("woff2"), url("/assets/fonts/Open-Sans-Bold.woff") format("woff"), url("/assets/fonts/Open-Sans-Bold.ttf") format("truetype"), url("/assets/fonts/Open-Sans-Bold.svg") format("svg"); /* Legacy iOS */
+  font-weight: bold;
+  font-style: normal;
+}
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+a {
+  color: cmyk(0, 100, 93, 0);
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@page {
+  margin: 16.35rem 0 8rem;
+  padding: 0;
+}
+html {
+  font-size: 10px;
+}
+
+body {
+  position: relative;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 1.2rem;
+  color: cmyk(0, 0, 0, 98);
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.15rem;
+}
+
+h2 {
+  color: cmyk(0, 100, 93, 0);
+  font-size: 1.55rem;
+  font-weight: normal;
+}
+
+.subline {
+  font-size: 1.7rem;
+  line-height: 2rem;
+}
+
+p {
+  margin-top: 1rem;
+}
+
+.hint {
+  font-size: 1.05rem;
+  color: #777;
+}
+
+sub,
+sup {
+  font-size: 0.7rem;
+}
+
+sub {
+  vertical-align: text-bottom;
+}
+
+/* @section 2. Head */
+.pdf-head {
+  position: fixed;
+  top: -10.3rem;
+  left: 0;
+  background: cmyk(0, 100, 93, 0);
+  width: 100%;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3rem 5rem 2.5rem;
+  overflow: hidden;
+}
+.pdf-head .logo {
+  float: right;
+  padding-right: 5rem;
+  margin-right: 4.2rem;
+}
+.pdf-head .logo img {
+  width: 20rem;
+  height: 2rem;
+}
+
+.pdf-title {
+  position: fixed;
+  top: -9.2rem;
+  left: 0;
+  width: 100%;
+  padding: 0 5rem;
+}
+.pdf-title h1 {
+  text-transform: uppercase;
+  color: #fff;
+}
+.pdf-title h1 span {
+  display: block;
+  font-size: 2.2rem;
+  text-transform: none;
+  color: #222;
+  padding-top: 3rem;
+  margin-bottom: -1.75rem;
+}
+
+/* @section 3. Footer */
+.pdf-footer .pdf-footer-table td {
+  vertical-align: top;
+  padding-right: 1rem;
+  width: 18%;
+  white-space: normal;
+}
+.pdf-footer .pdf-footer-table td a {
+  color: #f4f4f4;
+}
+.pdf-footer .pdf-footer-table td:nth-child(1) {
+  width: 10%;
+}
+.pdf-footer .pdf-footer-table td:nth-child(2) {
+  width: 15%;
+}
+.pdf-footer .pdf-footer-table td:nth-child(3) {
+  width: 11.5%;
+}
+.pdf-footer .pdf-footer-table td:nth-child(4) {
+  width: 13%;
+}
+.pdf-footer .pdf-footer-table td:nth-child(5) {
+  width: 22%;
+}
+
+/* @section 3.1 Locations */
+.pdf-locations .pdf-table-locations td {
+  padding-top: 1.5rem;
+  font-size: 1.08rem;
+  line-height: 1.1rem;
+}
+.pdf-locations .pdf-table-locations td strong {
+  display: block;
+  padding-bottom: 0.1rem;
+}
+
+/* @section 4. Content */
+.pdf-content {
+  padding: 0 5rem;
+}
+.pdf-content .left-column,
+.pdf-content .right-column {
+  vertical-align: top;
+  text-align: justify;
+}
+.pdf-content .left-column > div {
+  padding-right: 2rem;
+}
+.pdf-content .right-column {
+  margin-right: -0.4rem;
+}
+.pdf-content .right-column > div {
+  padding-left: 2rem;
+}
+
+.pdf-content-following-page {
+  margin-top: -2.1rem;
+}
+
+.pdf-table-product-image {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid cmyk(0, 0, 0, 0.2);
+  width: 100%;
+}
+.pdf-table-product-image td {
+  height: 20rem;
+  text-align: center;
+  overflow: hidden;
+}
+.pdf-table-product-image td.landscape img {
+  height: auto;
+  width: 100%;
+}
+.pdf-table-product-image td.portrait img {
+  height: 20rem;
+  width: auto;
+}
+
+/*
+ * Ellerhold - Checklist
+ *
+ * 1. Table
+ */
+/* @section 1. Table */
+.pdf-table-checklist {
+  width: 100%;
+  margin: 2rem 0 0;
+  border-spacing: 0;
+}
+.pdf-table-checklist td {
+  padding: 0.9rem 1.5rem;
+  vertical-align: middle;
+  line-height: 1.2rem;
+}
+.pdf-table-checklist tr td:first-child {
+  border-right: 1px solid cmyk(0, 0, 0, 0.2);
+  width: 1.5rem;
+}
+.pdf-table-checklist .pdf-checkbox {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid cmyk(0, 0, 0, 0.2);
+  margin-top: 0.5rem;
+}
+
+/*
+ * Ellerhold - Dekadenplan/Wochenplan
+ *
+ * 1. Table
+ */
+@page {
+  margin-bottom: 0;
+}
+.pdf-footer {
+  bottom: 0;
+}
+
+/* @section 1. Table */
+.pdf-table-pricelist-e-label,
+.pdf-table-dekadenplan,
+.pdf-table-wochenplan {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.pdf-table-pricelist-e-label th,
+.pdf-table-pricelist-e-label td,
+.pdf-table-dekadenplan th,
+.pdf-table-dekadenplan td,
+.pdf-table-wochenplan th,
+.pdf-table-wochenplan td {
+  text-align: center;
+  padding: 0.1rem 0.1rem 0.4rem;
+  vertical-align: top;
+  border-style: solid;
+  border-width: 0;
+  width: auto;
+}
+.pdf-table-pricelist-e-label th.col-month, .pdf-table-pricelist-e-label th.col-dek, .pdf-table-pricelist-e-label th.col-date,
+.pdf-table-pricelist-e-label td.col-month,
+.pdf-table-pricelist-e-label td.col-dek,
+.pdf-table-pricelist-e-label td.col-date,
+.pdf-table-dekadenplan th.col-month,
+.pdf-table-dekadenplan th.col-dek,
+.pdf-table-dekadenplan th.col-date,
+.pdf-table-dekadenplan td.col-month,
+.pdf-table-dekadenplan td.col-dek,
+.pdf-table-dekadenplan td.col-date,
+.pdf-table-wochenplan th.col-month,
+.pdf-table-wochenplan th.col-dek,
+.pdf-table-wochenplan th.col-date,
+.pdf-table-wochenplan td.col-month,
+.pdf-table-wochenplan td.col-dek,
+.pdf-table-wochenplan td.col-date {
+  width: 8rem;
+}
+.pdf-table-pricelist-e-label th.border-top,
+.pdf-table-pricelist-e-label td.border-top,
+.pdf-table-dekadenplan th.border-top,
+.pdf-table-dekadenplan td.border-top,
+.pdf-table-wochenplan th.border-top,
+.pdf-table-wochenplan td.border-top {
+  border-top-width: 1px;
+}
+.pdf-table-pricelist-e-label th.border-left,
+.pdf-table-pricelist-e-label td.border-left,
+.pdf-table-dekadenplan th.border-left,
+.pdf-table-dekadenplan td.border-left,
+.pdf-table-wochenplan th.border-left,
+.pdf-table-wochenplan td.border-left {
+  border-left-width: 1px;
+}
+.pdf-table-pricelist-e-label th.border-right,
+.pdf-table-pricelist-e-label td.border-right,
+.pdf-table-dekadenplan th.border-right,
+.pdf-table-dekadenplan td.border-right,
+.pdf-table-wochenplan th.border-right,
+.pdf-table-wochenplan td.border-right {
+  border-right-width: 1px;
+}
+.pdf-table-pricelist-e-label th.border-bottom,
+.pdf-table-pricelist-e-label td.border-bottom,
+.pdf-table-dekadenplan th.border-bottom,
+.pdf-table-dekadenplan td.border-bottom,
+.pdf-table-wochenplan th.border-bottom,
+.pdf-table-wochenplan td.border-bottom {
+  border-bottom-width: 1px;
+}
+.pdf-table-pricelist-e-label th,
+.pdf-table-dekadenplan th,
+.pdf-table-wochenplan th {
+  background: cmyk(0, 0, 0, 0.05);
+  border-color: cmyk(0, 0, 0, 0.2);
+  line-height: 1.1rem;
+}
+.pdf-table-pricelist-e-label .th th,
+.pdf-table-dekadenplan .th th,
+.pdf-table-wochenplan .th th {
+  text-transform: uppercase;
+  padding-top: 0.3rem;
+  padding-bottom: 0.2rem;
+}
+.pdf-table-pricelist-e-label .th-alternative th,
+.pdf-table-dekadenplan .th-alternative th,
+.pdf-table-wochenplan .th-alternative th {
+  font-weight: normal;
+}
+.pdf-table-pricelist-e-label td,
+.pdf-table-dekadenplan td,
+.pdf-table-wochenplan td {
+  border-color: cmyk(0, 0, 0, 0.2);
+}
+
+.pdf-table-dekadenplan td,
+.pdf-table-wochenplan td {
+  font-size: 1rem;
+}
+
+.pdf-table-dekadenplan th.col-day, .pdf-table-dekadenplan th.col-duration,
+.pdf-table-dekadenplan td.col-day,
+.pdf-table-dekadenplan td.col-duration {
+  width: 4rem;
+}
+
+.pdf-table-wochenplan .th th {
+  padding-bottom: 0.4rem;
+  font-size: 1.1rem;
+  vertical-align: middle;
+}
+.pdf-table-wochenplan th.col-kw, .pdf-table-wochenplan th.col-day,
+.pdf-table-wochenplan td.col-kw,
+.pdf-table-wochenplan td.col-day {
+  width: 3.5rem;
+}
+
+.pdf-table-pricelist-e-label .th th {
+  padding-top: 0;
+  font-size: 1.1rem;
+}
+.pdf-table-pricelist-e-label th, .pdf-table-pricelist-e-label td {
+  width: 8rem;
+}
+.pdf-table-pricelist-e-label th.col-total, .pdf-table-pricelist-e-label td.col-total {
+  width: 14rem;
+}
+
+.dekadenplan .hint,
+.wochenplan .hint,
+.pricelist-e-label .hint {
+  margin-top: 1rem;
+}
+
+.pricelist-e-label h2 {
+  margin-top: 0.5rem;
+}        </style>
+        <title>
+            Dekadenplan für Plakate        </title>
+        <meta name="author" content="ellerhold.de" />
+        <meta name="keywords" content="Dekadenplan, Plakate, PDF, Download, Ellerhold, Druckerei" />
+        <meta name="description" content="Dekadenplan für Plakate zum Download" />
+    </head>
+    <body>
+        <div class="pdf-head clearfix">
+    <a class="logo"
+       href="https://matthias.radebeul.lan:49382/?utm_source=el&utm_medium=pdf&utm_campaign=dekadenplan"
+       title="Ellerhold Gruppe">
+        <img src="file:///var/www/public/ellerhold.de/assets/img/ellerhold/ellerhold-logo-cmyk.jpg" title="Ellerhold Gruppe" />
+    </a>
+</div>
+    <div class="pdf-title">
+        <h1>
+            Dekadenplan 2025                <span>Dekadenplan für 2025</span>
+                    </h1>
+                    <p class="subline">
+                Plakatmedien            </p>
+            </div>
+        <div class="pdf-content dekadenplan">
+            <table class="pdf-table-dekadenplan">
+                <tr class="th">
+                    <th rowspan="2" class="col-month border-left border-right border-bottom border-top">Monat</th>
+                    <th rowspan="2" class="col-dek border-right border-bottom border-top">Dekade</th>
+                    <th colspan="3" class="border-right border-top">Block A</th>
+                    <th colspan="3" class="border-right border-top">Block B</th>
+                    <th rowspan="2" class="col-date border-top border-right border-bottom">Plakat-<br/>eingang</th>
+                </tr>
+                <tr class="th-alternative">
+                    <th class="col-day border-bottom">Tag</th>
+                    <th class="col-date border-bottom">Datum</th>
+                    <th class="col-duration border-right border-bottom">Dauer</th>
+                    <th class="col-day border-bottom">Tag</th>
+                    <th class="col-date border-bottom">Datum</th>
+                    <th class="col-duration border-right border-bottom">Dauer</th>
+                </tr>
+                                        <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="3">
+                                    Januar                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">1</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        31.12. - 13.01.                                    </td>
+                                    <td class="col-duration border-right border-bottom">14</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        03.01. - 16.01.                                    </td>
+                                    <td class="col-duration border-right border-bottom">14</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    18.12.2024                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">2</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        14.01. - 23.01.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        17.01. - 27.01.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    03.01.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">3</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        24.01. - 03.02.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        28.01. - 06.02.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    16.01.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="2">
+                                    Februar                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">4</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        04.02. - 13.02.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        07.02. - 17.02.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    27.01.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">5</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        14.02. - 24.02.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        18.02. - 27.02.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    06.02.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="3">
+                                    März                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">6</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        25.02. - 06.03.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        28.02. - 10.03.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    17.02.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">7</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        07.03. - 17.03.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        11.03. - 20.03.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    27.02.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">8</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        18.03. - 27.03.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        21.03. - 31.03.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    10.03.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="3">
+                                    April                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">9</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        28.03. - 07.04.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        01.04. - 10.04.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    20.03.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">10</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        08.04. - 17.04.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        11.04. - 21.04.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    31.03.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">11</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        18.04. - 28.04.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        22.04. - 01.05.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    10.04.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="3">
+                                    Mai                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">12</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        29.04. - 08.05.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        02.05. - 12.05.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    17.04.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">13</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        09.05. - 19.05.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        13.05. - 22.05.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    30.04.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">14</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        20.05. - 29.05.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        23.05. - 02.06.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    12.05.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="3">
+                                    Juni                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">15</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        30.05. - 09.06.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        03.06. - 12.06.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    22.05.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">16</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        10.06. - 19.06.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        13.06. - 23.06.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    02.06.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">17</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        20.06. - 30.06.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        24.06. - 03.07.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    12.06.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="3">
+                                    Juli                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">18</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        01.07. - 10.07.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        04.07. - 14.07.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    23.06.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">19</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        11.07. - 21.07.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        15.07. - 24.07.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    03.07.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">20</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        22.07. - 31.07.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        25.07. - 04.08.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    14.07.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="3">
+                                    August                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">21</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        01.08. - 11.08.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        05.08. - 14.08.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    24.07.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">22</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        12.08. - 21.08.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        15.08. - 25.08.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    04.08.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">23</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        22.08. - 01.09.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        26.08. - 04.09.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    13.08.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="3">
+                                    September                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">24</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        02.09. - 11.09.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        05.09. - 15.09.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    25.08.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">25</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        12.09. - 22.09.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        16.09. - 25.09.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    04.09.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">26</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        23.09. - 02.10.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        26.09. - 06.10.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    15.09.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="3">
+                                    Oktober                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">27</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        03.10. - 13.10.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        07.10. - 16.10.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    25.09.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">28</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        14.10. - 23.10.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        17.10. - 27.10.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    06.10.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">29</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        24.10. - 03.11.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        28.10. - 06.11.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    16.10.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="3">
+                                    November                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">30</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        04.11. - 13.11.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        07.11. - 17.11.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    24.10.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">31</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        14.11. - 24.11.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        18.11. - 27.11.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    06.11.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">32</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        25.11. - 04.12.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        28.11. - 08.12.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    14.11.2025                                </td>
+                                                    </tr>
+                                                            <tr>
+                                                            <td class="col-month border-left border-right border-bottom" rowspan="2">
+                                    Dezember                                </td>
+                                                                                        <td class="col-dek border-right border-bottom">33</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        05.12. - 15.12.                                    </td>
+                                    <td class="col-duration border-right border-bottom">11</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        09.12. - 18.12.                                    </td>
+                                    <td class="col-duration border-right border-bottom">10</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    27.11.2025                                </td>
+                                                    </tr>
+                                            <tr>
+                                                        <td class="col-dek border-right border-bottom">34</td>
+                                                                                                <td class="col-day border-bottom">
+                                        Di.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        16.12. - 29.12.                                    </td>
+                                    <td class="col-duration border-right border-bottom">14</td>
+                                                                                                                                <td class="col-day border-bottom">
+                                        Fr.                                    </td>
+                                    <td class="col-date border-bottom">
+                                        19.12. - 01.01.                                    </td>
+                                    <td class="col-duration border-right border-bottom">14</td>
+                                                                                                                        <td class="col-date border-right border-bottom">
+                                    08.12.2025                                </td>
+                                                    </tr>
+                                                </table>
+            <div class="hint">
+                <strong>Alle Angaben ohne Gewähr.</strong> Der Plakateingang ist der späteste Anlieferungstermin am Plakatlager.            </div>
+        </div>
+    </body>
+</html>
