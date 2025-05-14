@@ -1,7 +1,6 @@
 <?php
 
 use Dompdf\Dompdf;
-use Ellerhold\Common\Filesystem\FilesystemHelper;
 
 require __DIR__ . '/vendor/autoload.php';
 
